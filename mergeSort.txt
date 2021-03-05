@@ -1,0 +1,58 @@
+public class MyClass {
+    public static void merge(
+  int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k] = l[i];
+            i++;
+        }
+        else {
+            a[k] = r[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < left) {
+        a[k] = l[i];
+        i++;
+        k++;
+    }
+    while (j < right) {
+        a[k] = r[j];
+        j++;
+        k++;
+    }
+}
+        
+   
+    public void divide(int[] arr,int n){
+        if (n < 2) {
+        return;
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+
+    for (int i = 0; i < l.length; i++) {
+        l[i] = arr[i];
+    }
+    for (int i = 0; i < r.length; i++) {
+        r[i] = arr[mid+i];
+    }
+    divide(l, l.length);
+    divide(r, r.length);
+        merge(arr, l, r, mid, n - mid);
+        }
+    
+    public static void main(String args[]) {
+      int arr[]={1,2,5,0,2,99,11,22,21,7};
+      MyClass cl=new MyClass();
+      cl.divide(arr,arr.length);
+      for(int i:arr){
+          System.out.println(i);
+      }
+      
+    }
+}

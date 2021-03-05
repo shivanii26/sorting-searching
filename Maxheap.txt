@@ -1,0 +1,25 @@
+public class CheckMaxHeap{
+    
+    
+       // Returns true if arr[i..n-1] 
+    // represents a max-heap
+   public static void main(String args[]){
+       int[] arr={20,15,10,5,6,1,2,22};
+       int flag=0;
+       int n=arr.length-1;
+       for(int i=0;i<=(n-1)/2;i++){
+           if(arr[2*i+1]>arr[i]){
+               flag=1;
+           }
+           if(2*i+2<=n && arr[2*i+2]>arr[i]){
+               flag=1;
+           }
+       }
+       if(flag==1){
+       System.out.println("not a max heap");
+       }
+       else{
+           System.out.println("max heap");
+       }
+   }
+}

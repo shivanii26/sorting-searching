@@ -1,0 +1,93 @@
+public class Binary{
+public static void main(String args[]) {
+        
+        int arr[]={1,8,19,21,22,45,81};
+        int search=88;
+        int beg=0;
+        int end=arr.length-1;
+        int index=0;
+        int mid=0;
+        int flag=0;
+        while(beg<=end){
+            
+            mid=(beg+end)/2;
+        
+            if(arr[mid]==search){
+                index=mid+1;
+                System.out.println("Item found at: "+index);
+                flag=1;
+                break;
+            }
+            else if(arr[mid]>search){
+                end=mid-1;
+            }
+            else{
+                beg=mid+1;
+            }
+                
+            
+        }
+        if(flag==0){
+            System.out.println("Item not found");
+            
+        }
+        
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+public class MyClass {
+    
+    public static int recursiveBinarySearch(int[] arr, int beg, int end, int search){
+        int mid=0;
+        int flag=0;
+        while(beg<=end){
+            
+            mid=(beg+end)/2;
+        
+            if(arr[mid]==search){
+                flag=mid+1;
+                break;
+            }
+            else if(arr[mid]>search){
+                end=mid-1;
+                recursiveBinarySearch(arr,beg,end,search);
+            }
+            else{
+                beg=mid+1;
+                recursiveBinarySearch(arr,beg,end,search);
+            }
+                
+            
+        }
+        return flag==0?0:flag;
+       
+    }
+    public static void main(String args[]) {
+        
+        int arr[]={1,8,19,21,22,45,81};
+        int search=1;
+        int beg=0;
+        int end=arr.length-1;
+        
+        int val=recursiveBinarySearch(arr,beg,end,search);
+        if(val==0){
+            System.out.println("Item not found");
+            
+        }
+        else{
+        System.out.println("index found at: "+val);
+        
+        }
+        }
+    }
